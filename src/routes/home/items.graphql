@@ -1,0 +1,20 @@
+query Query {
+  latestNews {
+    id
+    marca
+    modelo
+    urlCorta
+    precio
+    fullName
+    createdAt
+  }
+  featuredNews {
+    id
+    urlCorta
+    precio
+    marca
+    modelo
+    foto
+    fullName
+  }
+}

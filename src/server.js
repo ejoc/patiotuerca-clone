@@ -35,6 +35,9 @@ import configureStore from './store/configureStore';
 import { setRuntimeVariable } from './actions/runtime';
 import config from './config';
 
+import images from './imagesMiddleware';
+import Aviso from './data/models/Anuncio';
+
 const app = express();
 
 //
@@ -96,6 +99,28 @@ app.get(
     const token = jwt.sign(req.user, config.auth.jwt.secret, { expiresIn });
     res.cookie('id_token', token, { maxAge: 1000 * expiresIn, httpOnly: true });
     res.redirect('/');
+  },
+);
+
+app.post(
+  '/anuncios',
+  images.multer.single('image'),
+  images.sendUploadToCloudinary,
+  images.generateShortUrl,
+  (req, res, next) => {
+    const data = req.body;
+
+    if (req.file && req.file.cloudStoragePublicUrl) {
+      req.body.foto = req.file.cloudStoragePublicUrl;
+    }
+
+    Aviso.create(data)
+      .then(aviso => {
+        res.json({ result: 'Creado correctamente!' });
+      })
+      .catch(error => {
+        next(err);
+      });
   },
 );
 

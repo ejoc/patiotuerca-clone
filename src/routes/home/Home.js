@@ -1,59 +1,60 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql, compose } from 'react-apollo';
+import gql from 'graphql-tag';
+import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import newsQuery from './news.graphql';
+import { Row, Col } from 'antd';
+
+import ListFeaturedItem from '../../components/ListFeaturedItem';
+import ListLatestItem from '../../components/ListLatestItem';
 import s from './Home.css';
+import items from './items.graphql';
+
+// function Home ({ data: { featuredNews, latestNews } }) {
+//   return (
+//     <div>
+//       <div className={s.newsItem}>
+//         <div className={s.title}>
+//           <h2>DESTACADOS</h2>
+//         </div>
+//         <ListFeaturedItem featuredNews={featuredNews} />
+//       </div>
+//       <div className={s.newsItem}>
+//         <div className={s.title}>
+//           <h2>ÚLTIMOS AVISOS</h2>
+//         </div>
+//         <ListLatestItem latestNews={latestNews} />
+//       </div>
+//     </div>
+//   );
+// }
 
 class Home extends React.Component {
-  static propTypes = {
-    data: PropTypes.shape({
-      loading: PropTypes.bool.isRequired,
-      news: PropTypes.arrayOf(
-        PropTypes.shape({
-          title: PropTypes.string.isRequired,
-          link: PropTypes.string.isRequired,
-          content: PropTypes.string,
-        }),
-      ),
-    }).isRequired,
-  };
 
+  componentDidMount() {
+    this.props.data.refetch();
+    console.log('wiiiiiii');
+  }
+  
   render() {
-    const { data: { loading, news } } = this.props;
+    const { data: { featuredNews, latestNews } } = this.props;
     return (
-      <div className={s.root}>
-        <div className={s.container}>
-          <h1>React.js News</h1>
-          {loading
-            ? 'Loading...'
-            : news.map(item =>
-                <article key={item.link} className={s.newsItem}>
-                  <h1 className={s.newsTitle}>
-                    <a href={item.link}>
-                      {item.title}
-                    </a>
-                  </h1>
-                  <div
-                    className={s.newsDesc}
-                    // eslint-disable-next-line react/no-danger
-                    dangerouslySetInnerHTML={{ __html: item.content }}
-                  />
-                </article>,
-              )}
+      <div>
+        <div className={s.newsItem}>
+          <div className={s.title}>
+            <h2>DESTACADOS</h2>
+          </div>
+          <ListFeaturedItem featuredNews={featuredNews} />
+        </div>
+        <div className={s.newsItem}>
+          <div className={s.title}>
+            <h2>ÚLTIMOS AVISOS</h2>
+          </div>
+          <ListLatestItem latestNews={latestNews} />
         </div>
       </div>
     );
   }
 }
 
-export default compose(withStyles(s), graphql(newsQuery))(Home);
+export default compose(withStyles(s), graphql(items))(Home);

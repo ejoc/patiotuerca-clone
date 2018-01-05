@@ -1,0 +1,18 @@
+.currency::before {
+  content:'$ ';
+}
+
+.currency {
+  color: green;
+}
+
+.message {
+  padding: 50px;
+  align-content: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.message h3 {
+  color: green;
+}

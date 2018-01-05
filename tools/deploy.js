@@ -15,11 +15,11 @@ import run from './run';
 
 // GitHub Pages
 const remote = {
-  name: 'github',
-  url: 'https://github.com/<user>/<repo>.git',
-  branch: 'gh-pages',
-  website: 'https://<user>.github.io/<repo>/',
-  static: true,
+  name: 'heroku',
+  url: 'https://git.heroku.com/polar-fjord-44148.git',
+  branch: 'master',
+  website: 'https://polar-fjord-44148.herokuapp.com',
+  // static: true,
 };
 
 // Heroku

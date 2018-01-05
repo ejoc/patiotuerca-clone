@@ -1,0 +1,23 @@
+@media only screen and (max-width: 900px) {
+  .hiddenSm {
+      display: none;
+  }
+}
+
+.currency::before {
+  content:'$ ';
+}
+
+.currency {
+  background-color: #F7F7F7;
+  color: #727070;
+  font-weight: bold;
+}
+
+.fullName {
+  font-weight: bold;
+}
+
+.createdAt {
+  color: #918F8F;
+}

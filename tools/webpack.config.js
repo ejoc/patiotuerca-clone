@@ -113,9 +113,32 @@ const config = {
         loader: 'graphql-tag/loader',
       },
 
+      // Load antd here
+      {
+        test: /\.css$/,
+        include: [/node_modules\/.*antd/],
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: './tools/postcss.config.js',
+              },
+            },
+          },
+        ],
+      },
+
       // Rules for Style Sheets
       {
         test: reStyle,
+        exclude: [/node_modules\/.*antd/],
         rules: [
           // Convert CSS into JS module
           {
@@ -485,5 +508,8 @@ const serverConfig = {
     __dirname: false,
   },
 };
+
+clientConfig.module.rules[0].options.plugins = [...clientConfig.module.rules[0].options.plugins];
+clientConfig.module.rules[0].options.plugins.push(['import', { libraryName: 'antd', style: 'css' }]);
 
 export default [clientConfig, serverConfig];
