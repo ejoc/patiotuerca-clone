@@ -29,22 +29,22 @@ class AnuncioForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.setState(
-      {
-        loading: true,
-      },
-      () => {
-        this.props.form.validateFieldsAndScroll((err, values) => {
-          if (!err) {
-            console.log('Received values of form: ', values);
-            const formData = new FormData();
-            formData.append('image', values.image[0]);
-            formData.append('marca', values.marca);
-            formData.append('modelo', values.modelo);
-            formData.append('precio', values.precio);
-            formData.append('kilometraje', values.kilometraje);
-            formData.append('titulo', values.titulo);
-            formData.append('destacado', values.destacado);
+    
+      this.props.form.validateFieldsAndScroll((err, values) => {
+        if (!err) {
+          console.log('Received values of form: ', values);
+          const formData = new FormData();
+          formData.append('image', values.image[0]);
+          formData.append('marca', values.marca);
+          formData.append('modelo', values.modelo);
+          formData.append('precio', values.precio);
+          formData.append('kilometraje', values.kilometraje);
+          formData.append('titulo', values.titulo);
+          formData.append('destacado', values.destacado);
+
+          this.setState({
+            loading: true,
+          }, () => {
             fetch('/anuncios', {
               method: 'POST',
               body: formData,
@@ -60,10 +60,9 @@ class AnuncioForm extends React.Component {
               .catch(error => {
                 console.log(error);
               });
-          }
-        });
-      },
-    );
+          });
+        }
+      });
   };
 
   normFile = e => {
@@ -123,6 +122,10 @@ class AnuncioForm extends React.Component {
                     required: true,
                     message: 'Por favor ingrese la marca',
                   },
+                  {
+                    max: 30,
+                    message: 'Debe tener maximo 30 digitos'
+                  }
                 ],
               })(<Input placeholder="Ingresa la marca" />)}
             </FormItem>
@@ -134,6 +137,10 @@ class AnuncioForm extends React.Component {
                     required: true,
                     message: 'Por favor ingrese el modelo',
                   },
+                  {
+                    max: 30,
+                    message: 'Debe tener maximo 30 digitos'
+                  }
                 ],
               })(<Input placeholder="Ingresa el modelo" />)}
             </FormItem>
@@ -210,6 +217,10 @@ class AnuncioForm extends React.Component {
                     required: true,
                     message: 'Por favor ingrese el titulo',
                   },
+                  {
+                    max: 30,
+                    message: 'Debe tener maximo 30 digitos'
+                  }
                 ],
               })(<TextArea placeholder="Titulo de tu aviso" rows={4} />)}
             </FormItem>

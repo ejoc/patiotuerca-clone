@@ -119,7 +119,7 @@ app.post(
         res.json({ result: 'Creado correctamente!' });
       })
       .catch(error => {
-        next(err);
+        next(error);
       });
   },
 );

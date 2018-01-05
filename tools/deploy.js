@@ -16,9 +16,9 @@ import run from './run';
 // GitHub Pages
 const remote = {
   name: 'heroku',
-  url: 'https://git.heroku.com/polar-fjord-44148.git',
+  url: 'https://git.heroku.com/fullautos2.git',
   branch: 'master',
-  website: 'https://polar-fjord-44148.herokuapp.com',
+  website: 'https://fullautos2.herokuapp.com',
   // static: true,
 };
 
