@@ -24,6 +24,7 @@ const reScript = /\.jsx?$/;
 const reGraphql = /\.(graphql|gql)$/;
 const reStyle = /\.(css|less|scss|sss)$/;
 const reImage = /\.(bmp|gif|jpe?g|png|svg)$/;
+
 const staticAssetName = isDebug
   ? '[path][name].[ext]?[hash:8]'
   : '[hash:8].[ext]';

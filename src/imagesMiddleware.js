@@ -6,12 +6,6 @@ const urlshortener = google.urlshortener({
   auth: 'AIzaSyDMcfko587AwxG7CooMTgVLKnWtXpXZgLM',
 });
 
-cloudinary.config({
-  cloud_name: 'desti1rmu',
-  api_key: '529616971168449',
-  api_secret: 'uWSMZ2YudInguIBZ-mtg_m8iT-U',
-});
-
 function generateShortUrl(req, res, next) {
   if (!req.file) {
     return next();

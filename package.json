@@ -6,7 +6,12 @@
     "node": ">=6.5",
     "npm": ">=3.10"
   },
-  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
   "dependencies": {
     "antd": "^3.1.0",
     "apollo-client": "^1.7.0",
@@ -47,7 +52,7 @@
     "sequelize": "^4.2.1",
     "serialize-javascript": "^1.3.0",
     "source-map-support": "^0.4.15",
-    "sqlite3": "^3.1.8",
+    "sqlite3": "3.1.13",
     "style-loader": "^0.19.1",
     "universal-router": "^3.2.0",
     "whatwg-fetch": "^2.0.3"
@@ -150,7 +155,9 @@
     ],
     "env": {
       "test": {
-        "plugins": ["rewire"]
+        "plugins": [
+          "rewire"
+        ]
       }
     },
     "ignore": [
@@ -162,9 +169,18 @@
     ]
   },
   "lint-staged": {
-    "*.{js,jsx}": ["eslint --fix", "git add"],
-    "*.{json,graphql}": ["prettier --write", "git add"],
-    "*.{css,less,scss,sss}": ["stylelint --fix", "git add"]
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,graphql}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{css,less,scss,sss}": [
+      "stylelint --fix",
+      "git add"
+    ]
   },
   "scripts": {
     "lint-js": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" .",
