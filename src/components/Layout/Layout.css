@@ -27,6 +27,7 @@ html {
   line-height: 1.375; /* ~22px */
   overflow-x: hidden !important ; /* para que no salga el scroll en el componente list */
 }
+
 body  {
   margin: 0;
 }

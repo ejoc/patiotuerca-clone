@@ -19,7 +19,7 @@ const routes = {
       path: '/',
       load: () => import(/* webpackChunkName: 'home' */ './home'),
     },
-    
+
     {
       path: '/anuncios/new',
       load: () => import(/* webpackChunkName: 'admin' */ './new'),

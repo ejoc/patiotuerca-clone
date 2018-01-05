@@ -1,6 +1,6 @@
 @media only screen and (max-width: 900px) {
   .hiddenSm {
-      display: none;
+    display: none;
   }
 }
 
@@ -9,7 +9,7 @@
 }
 
 .currency {
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   color: #727070;
   font-weight: bold;
 }
@@ -19,5 +19,5 @@
 }
 
 .createdAt {
-  color: #918F8F;
+  color: #918f8f;
 }

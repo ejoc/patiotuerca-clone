@@ -58,8 +58,8 @@ const Anuncio = Model.define(
     timestamps: true,
     getterMethods: {
       fullName() {
-        return this.marca + ' ' + this.modelo
-      }
+        return `${this.marca} ${this.modelo}`;
+      },
     },
   },
 );

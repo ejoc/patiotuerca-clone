@@ -18,10 +18,10 @@ const latestNews = {
     // ];
     return Anuncio.findAll({
       attributes: [
-        'id', 
-        'urlCorta', 
-        'precio', 
-        'marca', 
+        'id',
+        'urlCorta',
+        'precio',
+        'marca',
         'modelo',
         'createdAt',
         // [sequelize.literal("marca || ' ' || modelo"), 'fullName'],

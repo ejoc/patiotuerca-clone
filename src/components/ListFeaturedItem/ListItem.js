@@ -9,15 +9,18 @@ class ListItem extends React.Component {
     return (
       <Col sm={12} lg={6}>
         <List.Item>
-          <Card 
+          <Card
             hoverable
             style={{ width: 240 }}
-            cover={<img alt={item.marca} src={item.foto} style={{ width: 240, height: 200 }}/>}
+            cover={
+              <img
+                alt={item.marca}
+                src={item.foto}
+                style={{ width: 240, height: 200 }}
+              />
+            }
           >
-            <Meta
-              title={item.fullName}
-              description={item.precio}
-            />
+            <Meta title={item.fullName} description={item.precio} />
           </Card>
         </List.Item>
       </Col>

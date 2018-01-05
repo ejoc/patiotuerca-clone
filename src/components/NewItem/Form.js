@@ -22,46 +22,48 @@ const FormItem = Form.Item;
 const { TextArea } = Input;
 
 class AnuncioForm extends React.Component {
-
   state = {
     message: null,
     loading: false,
-  }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.setState({
-      loading: true,
-    }, () => {
-      this.props.form.validateFieldsAndScroll((err, values) => {
-        if (!err) {
-          console.log('Received values of form: ', values);
-          const formData = new FormData();
-          formData.append('image', values.image[0]);
-          formData.append('marca', values.marca);
-          formData.append('modelo', values.modelo);
-          formData.append('precio', values.precio);
-          formData.append('kilometraje', values.kilometraje);
-          formData.append('titulo', values.titulo);
-          formData.append('destacado', values.destacado);
-          fetch('/anuncios', {
-            method: 'POST',
-            body: formData,
-          })
-            .then(result => {
-              console.log(result);
-              this.setState({
-                message: 'Tu aviso fue creado exitosamente',
-                loading: false,
-              });
-              // history.push('/');
+    this.setState(
+      {
+        loading: true,
+      },
+      () => {
+        this.props.form.validateFieldsAndScroll((err, values) => {
+          if (!err) {
+            console.log('Received values of form: ', values);
+            const formData = new FormData();
+            formData.append('image', values.image[0]);
+            formData.append('marca', values.marca);
+            formData.append('modelo', values.modelo);
+            formData.append('precio', values.precio);
+            formData.append('kilometraje', values.kilometraje);
+            formData.append('titulo', values.titulo);
+            formData.append('destacado', values.destacado);
+            fetch('/anuncios', {
+              method: 'POST',
+              body: formData,
             })
-            .catch(error => {
-              console.log(error);
-            });
-        }
-      });
-    })
+              .then(result => {
+                console.log(result);
+                this.setState({
+                  message: 'Tu aviso fue creado exitosamente',
+                  loading: false,
+                });
+                // history.push('/');
+              })
+              .catch(error => {
+                console.log(error);
+              });
+          }
+        });
+      },
+    );
   };
 
   normFile = e => {
@@ -100,10 +102,12 @@ class AnuncioForm extends React.Component {
       valor = 3.0;
     }
 
-    if(this.state.message) {
+    if (this.state.message) {
       return (
         <div className={s.message}>
-          <h3>{this.state.message}</h3>
+          <h3>
+            {this.state.message}
+          </h3>
         </div>
       );
     }
@@ -148,8 +152,7 @@ class AnuncioForm extends React.Component {
                   step={0.01}
                   // placeholder="$ 0.00"
                   formatter={value =>
-                    `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-                  }
+                    `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                   parser={value => value.replace(/\$\s?|(,*)/g, '')}
                   style={{ width: '100%' }}
                   // onChange={onChange}
@@ -233,7 +236,12 @@ class AnuncioForm extends React.Component {
         <Row>
           <Col span={24} style={{ textAlign: 'center' }}>
             <Button onClick={() => console.log('cancelar')}>CANCELAR</Button>
-            <Button style={{ marginLeft: 12 }} type="primary" htmlType="submit" loading={this.state.loading} >
+            <Button
+              style={{ marginLeft: 12 }}
+              type="primary"
+              htmlType="submit"
+              loading={this.state.loading}
+            >
               CREAR AVISO
             </Button>
           </Col>

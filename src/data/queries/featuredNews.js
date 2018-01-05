@@ -12,7 +12,7 @@ const featuredNews = {
       },
       order: [['createdAt', 'DESC']],
       limit: 4,
-    })
+    });
   },
 };
 

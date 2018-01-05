@@ -30,12 +30,11 @@ import items from './items.graphql';
 // }
 
 class Home extends React.Component {
-
   componentDidMount() {
     this.props.data.refetch();
     console.log('wiiiiiii');
   }
-  
+
   render() {
     const { data: { featuredNews, latestNews } } = this.props;
     return (

@@ -509,7 +509,12 @@ const serverConfig = {
   },
 };
 
-clientConfig.module.rules[0].options.plugins = [...clientConfig.module.rules[0].options.plugins];
-clientConfig.module.rules[0].options.plugins.push(['import', { libraryName: 'antd', style: 'css' }]);
+clientConfig.module.rules[0].options.plugins = [
+  ...clientConfig.module.rules[0].options.plugins,
+];
+clientConfig.module.rules[0].options.plugins.push([
+  'import',
+  { libraryName: 'antd', style: 'css' },
+]);
 
 export default [clientConfig, serverConfig];
