@@ -7,6 +7,9 @@ const { Item } = List;
 class ListItem extends React.Component {
   render() {
     const { item } = this.props;
+    const precio = `$ ${Number(item.precio).toLocaleString('en', {
+      minimumFractionDigits: 2,
+    })}`;
     return (
       <Col sm={12} lg={6}>
         <Item>
@@ -21,7 +24,8 @@ class ListItem extends React.Component {
               />
             }
           >
-            <Meta title={item.fullName} description={item.precio} />
+            <Meta 
+              title={item.fullName} description={precio} />
           </Card>
         </Item>
       </Col>

@@ -17,7 +17,7 @@ class Layout2 extends React.Component {
 
   render() {
     return (
-      <Layout className="page-wrapper">
+      <Layout className={s.pageWrapper}>
         <Header />
 
         {/* <Content style={{ margin: '24px 16px 0' }} > */}
@@ -27,8 +27,8 @@ class Layout2 extends React.Component {
           </div>
         </div>
         {/* </Content> */}
-        <Footer style={{ textAlign: 'center' }} id="footer">
-          {new Date().getFullYear()} EL UNIVERSO TODOS LOS DERECHOS RESERVADADOS
+        <Footer className={s.footer}>
+          {new Date().getFullYear()} C.A. EL UNIVERSO. TODOS LOS DERECHOS RESERVADOS
         </Footer>
       </Layout>
     );

@@ -224,3 +224,10 @@ textarea {
     padding-right: 130px;
   } */
 }
+
+.footer {
+  text-align: center;
+  color: white;
+  background: #4d4d4e;
+  font-size: 14px;
+}
